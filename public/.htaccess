@@ -1,0 +1,13 @@
+# Можно обращаться к файлам без их расширения
+Options -MultiViews
+RewriteEngine On
+
+# адрес с которого переписываются файлы (пути)
+RewriteBase /public/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#делаем возможность передачи данных не используя конструкцию/?url=
+#то есть вместо /?url=home мы можем писать /home
+RewriteRule ^(.+)$ index.php?url=$1
